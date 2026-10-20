@@ -1,8 +1,8 @@
 import numpy as np
 from scipy import stats
-from gym import load_times, hhmm
+from listening import load_plays, hhmm
 #
-times = load_times()
-print(len(times), "times,", len(np.unique(times)), "different")
-res = stats.mode(times)
+plays = load_plays()
+print(len(plays), "plays,", len(np.unique(plays)), "different times")
+res = stats.mode(plays)
 print("scipy's mode:", hhmm(res.mode), "seen", res.count, "time")

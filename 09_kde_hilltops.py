@@ -1,11 +1,11 @@
 import numpy as np
 from scipy.stats import gaussian_kde
 from scipy.signal import find_peaks
-from gym import load_times, hhmm
+from listening import load_plays, hhmm
 #
-times = load_times()
-kde = gaussian_kde(times)              # one small hill per check-in
-grid = np.linspace(5, 23, 1801)        # a point every 36 seconds
-height = kde(grid)
+plays = load_plays()
+curve = gaussian_kde(plays)            # a small hill on every play
+grid = np.linspace(6, 25, 1901)        # a point every 36 seconds
+height = curve(grid)
 tops, _ = find_peaks(height)           # higher than both neighbours
 print([hhmm(t) for t in grid[tops]])

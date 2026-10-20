@@ -1,8 +1,8 @@
 import numpy as np
-from gym import load_times, hhmm
+from listening import load_plays, hhmm
 #
-times = load_times()
-print("mean check-in:", hhmm(times.mean()))
-counts, edges = np.histogram(times, bins=np.arange(5, 24))
-print("people in the 13:00 hour:", counts[13 - 5])
-print("people in the 18:00 hour:", counts[18 - 5])
+plays = load_plays()
+print("mean play time:", hhmm(plays.mean()))
+counts, edges = np.histogram(plays, bins=np.arange(6, 26))
+print("plays in the 16:00 hour:", counts[16 - 6])
+print("plays in the 22:00 hour:", counts[22 - 6])
